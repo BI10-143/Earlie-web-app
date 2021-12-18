@@ -11,6 +11,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/fontawesome-all.css" rel="stylesheet">
     <link href="css/swiper.css" rel="stylesheet">
+	<link href="css/magnific-popup.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 	
 	
@@ -32,7 +33,10 @@
                         <a class="nav-link page-scroll" href="#home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#demo">Demo</a>
+                        <a class="nav-link page-scroll" href="#demo">Video</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#trydemo">Try Demo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="#features">Features</a>
@@ -57,8 +61,8 @@
                     <div class="text-container" >
                         <h1 class="h1-large">earlie</h1>
                         <p class="p-large">TO BE HEARD, TO BE SHARED</p>
-                        <a class="btn-solid-lg" href="#your-link"><i class="fab fa-apple"></i>Download</a>
                         <a class="btn-solid-lg secondary" href="#your-link"><i class="fab fa-google-play"></i>Download</a>
+                        <a class="btn-solid-lg nav-link page-scroll" href="#trydemo"></i>Try Demo</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
@@ -71,18 +75,18 @@
     </header> <!-- end of header -->
     <!-- end of header -->
 
-    <!-- Demo Video -->
+    <!-- Video -->
     <div id="demo" class="video">
         <div class="container">
             <div class="row" >
                 <div class="col-lg-12">
-                    <h2 class="h2-heading" style="margin-top: 70px;">VIDEO DEMO</h2>
+                    <h2 class="h2-heading" style="margin-top: 70px;">TUTORIAL VIDEO</h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
                 <div class="col-lg-12">
                 <center>
-                    <video width="850" height="auto" controls>
+                    <video width="800" height="auto" controls>
                         <source src="images/demo video.mp4" type="video/mp4">
                     </video>
                 </center>
@@ -90,6 +94,32 @@
             </div><!-- end of row -->
         </div><!-- end of container -->
     </div><!--end of Demo video-->
+
+    <!--Try demo-->
+    <div id="trydemo">
+        <div class="wrapper">
+            <div class="container">
+                <div class="file-upload">
+                    <h2>Try The Demo</h2>
+                    <button class="btn-solid-lg secondary" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Video</button>
+                    <input class="btn-solid-lg secondary mt-3" type="button" onclick="myFunction()" value="Submit">
+                    <div class="image-upload-wrap">
+                      <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                      <div class="drag-text">
+                        <h3>Drag and drop a file or select add Image</h3>
+                      </div>
+                    </div>
+                    <div class="file-upload-content">
+                      <img class="file-upload-image" src="#" alt="your image" />
+                    </div>
+                  </div>
+              
+                </div>
+            </div>
+                
+            </div>
+          </div>
+    </div>
 
     <!-- Features / Card p must be 3 lines to maxium the feature-->
     <div id="features" class="cards-1">
@@ -291,15 +321,22 @@
                     </div> <!-- end of image-container -->
                 </div> <!-- end of col -->
                 <div id="form" class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12 mb-5">
+                            <center>
+                                <h3 style="color: black">Contact Us (*^▽^*)</h3>
+                            </center>
+                        </div> <!-- end of col -->
+                    </div> <!-- end of row -->
                     <form id="labnol">
                         <div class="speech">
-                            <label for="name">Your Name</label><img onclick="startDictation()" src="https://i.imgur.com/cHidSVu.gif" />
+                            <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" placeholder="Your name...">
                             
-                            <label for="email">Email</label><img onclick="startDictation()" src="https://i.imgur.com/cHidSVu.gif" />
+                            <label for="email">Email</label>
                             <input type="text" id="email" name="email" placeholder="Email...">
                             
-                            <label for="subject">Subject</label><img onclick="startDictation()" src="https://i.imgur.com/cHidSVu.gif" />
+                            <label for="subject">Subject</label>
                             <textarea id="subject" name="subject" placeholder="Write something..." style="height:200px"></textarea>
                         
                             <input type="submit" value="Submit">  
@@ -363,6 +400,7 @@
     <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
     <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="js/uploadvideo.js"></script> <!-- Upload scripts -->
     <script>
 
         function startDictation() {
@@ -377,17 +415,7 @@
             recognition.start();
   
             recognition.onresult = function (e) {
-              document.getElementById('name').value = e.results[0][0].name;
-              recognition.stop();
-              document.getElementById('labnol');
-            }
-            recognition.onresult = function (e) {
-              document.getElementById('email').value = e.results[0][0].email;
-              recognition.stop();
-              document.getElementById('labnol');
-            }
-            recognition.onresult = function (e) {
-              document.getElementById('subject').value = e.results[0][0].subject;
+              document.getElementById('name').value = e.results[0][0].recognition;
               recognition.stop();
               document.getElementById('labnol');
             }
